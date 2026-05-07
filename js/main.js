@@ -52,12 +52,18 @@
         }, 1100);
     }
 
-    if (document.readyState === 'complete') {
+    let preloaderStarted = false;
+    function safeRunPreloader() {
+        if (preloaderStarted) return;
+        preloaderStarted = true;
         runPreloader();
+    }
+    if (document.readyState === 'complete') {
+        safeRunPreloader();
     } else {
-        window.addEventListener('load', runPreloader, { once: true });
+        window.addEventListener('load', safeRunPreloader, { once: true });
         // safety net — never get stuck on broken assets
-        setTimeout(runPreloader, 3500);
+        setTimeout(safeRunPreloader, 3500);
     }
 
     /* =====================================================
@@ -257,8 +263,10 @@
                 const rect = hero.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width  - 0.5;
                 const y = (e.clientY - rect.top)  / rect.height - 0.5;
-                if (glow1) glow1.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
-                if (glow2) glow2.style.transform = `translate(${x * -40}px, ${y * -40}px)`;
+                // use the `translate` property (independent of `transform`) so the
+                // hero__glow CSS keyframe animation can keep driving `transform` in parallel
+                if (glow1) glow1.style.translate = `${x * 30}px ${y * 30}px`;
+                if (glow2) glow2.style.translate = `${x * -40}px ${y * -40}px`;
             });
         }
     }
