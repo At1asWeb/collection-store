@@ -325,7 +325,8 @@ ul { list-style: none; padding: 0; margin: 0; }
     to { opacity: 1; }
 }
 
-/* curtain reveal */
+/* curtains — start off-screen so the welcome content is visible during load,
+   then close together at finish to "shutter" the screen before the page reveals. */
 .preloader__curtain {
     position: absolute;
     left: 0;
@@ -333,16 +334,25 @@ ul { list-style: none; padding: 0; margin: 0; }
     height: 50%;
     background: #050505;
     z-index: 3;
-    transform: translateY(0);
-    transition: transform 1.2s var(--easing);
+    transition: transform 1s var(--easing);
+    pointer-events: none;
 }
-.preloader__curtain--top    { top: 0;    border-bottom: 1px solid rgba(212,175,55,.2); }
-.preloader__curtain--bottom { bottom: 0; border-top:    1px solid rgba(212,175,55,.2); }
+.preloader__curtain--top    { top: 0;    transform: translateY(-100%); border-bottom: 1px solid rgba(212,175,55,.25); }
+.preloader__curtain--bottom { bottom: 0; transform: translateY( 100%); border-top:    1px solid rgba(212,175,55,.25); }
 
-.preloader.is-finishing .preloader__curtain--top    { transform: translateY(-100%); }
-.preloader.is-finishing .preloader__curtain--bottom { transform: translateY( 100%); }
-.preloader.is-finishing .preloader__content { transition: opacity .5s ease, transform .8s var(--easing); opacity: 0; transform: translateY(-20px); }
-.preloader.is-hidden { opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .3s linear .4s, visibility 0s linear .8s; }
+.preloader.is-finishing .preloader__curtain--top    { transform: translateY(0); }
+.preloader.is-finishing .preloader__curtain--bottom { transform: translateY(0); }
+.preloader.is-finishing .preloader__content {
+    transition: opacity .45s ease .15s, transform .7s var(--easing) .1s;
+    opacity: 0;
+    transform: translateY(-12px);
+}
+.preloader.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity .5s linear .15s, visibility 0s linear .65s;
+}
 
 /* =========================================================
    CUSTOM CURSOR
@@ -1698,7 +1708,12 @@ ul { list-style: none; padding: 0; margin: 0; }
    ANIMATIONS / MISC
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    /* Tone down decorative motion (parallax, drift, ticker, hover-tilt, scroll-reveal)
+       but DO NOT kill the preloader — it's the brand intro and the user
+       explicitly asked for it to be visible. */
+    *:not(.preloader):not(.preloader *):not(.preloader__welcome span):not(.preloader__brand):not(.ring),
+    *:not(.preloader):not(.preloader *)::before,
+    *:not(.preloader):not(.preloader *)::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
