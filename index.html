@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="HUB — премиальный магазин коллекционных фигурок бойцов, мерча UFC и спортивных товаров. Эксклюзивные релизы и лимитированные коллекции." />
+    <meta name="theme-color" content="#0a0a0a" />
+    <title>HUB — Collection Store · Премиальный магазин коллекционных фигурок и мерча UFC</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230a0a0a'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='Bebas Neue, Impact, sans-serif' font-size='52' fill='%23d4af37' letter-spacing='2'%3EH%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+    <!-- =========================
+         PRELOADER
+    ========================== -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader__bg"></div>
+        <div class="preloader__rings">
+            <span class="ring ring--1"></span>
+            <span class="ring ring--2"></span>
+            <span class="ring ring--3"></span>
+        </div>
+        <div class="preloader__content">
+            <p class="preloader__welcome">
+                <span>Д</span><span>о</span><span>б</span><span>р</span><span>о</span>
+                <span class="space"></span>
+                <span>п</span><span>о</span><span>ж</span><span>а</span><span>л</span><span>о</span><span>в</span><span>а</span><span>т</span><span>ь</span>
+                <span class="space"></span>
+                <span>в</span>
+            </p>
+            <h1 class="preloader__brand" data-text="HUB">HUB</h1>
+            <p class="preloader__sub">Collection&nbsp;Store · est.&nbsp;2025</p>
+            <div class="preloader__progress">
+                <span class="preloader__progress-bar" id="preloaderBar"></span>
+            </div>
+            <p class="preloader__tag">загружаем коллекцию…</p>
+        </div>
+        <div class="preloader__curtain preloader__curtain--top"></div>
+        <div class="preloader__curtain preloader__curtain--bottom"></div>
+    </div>
+
+    <!-- =========================
+         CURSOR (custom)
+    ========================== -->
+    <div class="cursor" id="cursor" aria-hidden="true">
+        <span class="cursor__dot"></span>
+        <span class="cursor__ring"></span>
+    </div>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header class="nav" id="nav">
+        <div class="container nav__inner">
+            <a href="#" class="nav__logo" aria-label="HUB Collection Store">
+                <span class="nav__logo-mark">H</span>
+                <span class="nav__logo-text">
+                    <strong>HUB</strong>
+                    <em>Collection&nbsp;Store</em>
+                </span>
+            </a>
+
+            <nav class="nav__menu" aria-label="Главное меню">
+                <a href="#hero" class="nav__link is-active">Главная</a>
+                <a href="#categories" class="nav__link">Категории</a>
+                <a href="#drops" class="nav__link">Новинки</a>
+                <a href="#fighters" class="nav__link">Бойцы</a>
+                <a href="#about" class="nav__link">О нас</a>
+                <a href="#contacts" class="nav__link">Контакты</a>
+            </nav>
+
+            <div class="nav__actions">
+                <button class="icon-btn" aria-label="Поиск">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                </button>
+                <button class="icon-btn" aria-label="Избранное">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+                <button class="icon-btn icon-btn--cart" aria-label="Корзина">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span class="icon-btn__badge">3</span>
+                </button>
+                <button class="btn btn--primary nav__cta">Купить сейчас</button>
+                <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero" id="hero">
+        <div class="hero__bg">
+            <div class="hero__grid"></div>
+            <div class="hero__glow hero__glow--gold"></div>
+            <div class="hero__glow hero__glow--red"></div>
+            <div class="hero__noise"></div>
+        </div>
+
+        <div class="container hero__inner">
+            <div class="hero__copy">
+                <span class="eyebrow reveal" data-reveal>
+                    <span class="eyebrow__dot"></span>
+                    Новый дроп · UFC&nbsp;310 · ограниченный тираж
+                </span>
+
+                <h1 class="hero__title reveal" data-reveal data-delay="120">
+                    <span class="word">Коллекция</span>
+                    <span class="word"><em>чемпионов</em></span>
+                    <span class="word">в&nbsp;твоих&nbsp;руках</span>
+                </h1>
+
+                <p class="hero__lead reveal" data-reveal data-delay="220">
+                    HUB&nbsp;— премиальный магазин коллекционных фигурок легендарных бойцов,
+                    официального мерча&nbsp;UFC и спортивных аксессуаров.
+                    Эксклюзивные релизы, лимитированные тиражи, авторская сборка.
+                </p>
+
+                <div class="hero__actions reveal" data-reveal data-delay="320">
+                    <a href="#drops" class="btn btn--primary">
+                        <span>Смотреть коллекцию</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+                    </a>
+                    <a href="#about" class="btn btn--ghost">
+                        <span class="btn__play">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </span>
+                        О HUB · 1&nbsp;мин
+                    </a>
+                </div>
+
+                <ul class="hero__stats reveal" data-reveal data-delay="420">
+                    <li>
+                        <span class="hero__stat-num" data-count="540">0</span><span class="hero__stat-plus">+</span>
+                        <span class="hero__stat-label">фигурок<br/>в каталоге</span>
+                    </li>
+                    <li>
+                        <span class="hero__stat-num" data-count="36">0</span>
+                        <span class="hero__stat-label">официальных<br/>брендов</span>
+                    </li>
+                    <li>
+                        <span class="hero__stat-num" data-count="12">0</span><span class="hero__stat-plus">k</span>
+                        <span class="hero__stat-label">довольных<br/>коллекционеров</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="hero__visual reveal" data-reveal data-delay="200">
+                <div class="hero__card" data-tilt>
+                    <div class="hero__card-shine"></div>
+                    <span class="hero__card-tag">Limited · 250&nbsp;шт.</span>
+                    <div class="hero__card-art">
+                        <svg viewBox="0 0 320 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <radialGradient id="hg1" cx="50%" cy="40%" r="60%">
+                                    <stop offset="0%" stop-color="#ffe199" stop-opacity=".55"/>
+                                    <stop offset="60%" stop-color="#d4af37" stop-opacity=".15"/>
+                                    <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+                                </radialGradient>
+                                <linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#1a1a1a"/>
+                                    <stop offset="100%" stop-color="#000"/>
+                                </linearGradient>
+                                <linearGradient id="hg3" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#ffe7a1"/>
+                                    <stop offset="50%" stop-color="#d4af37"/>
+                                    <stop offset="100%" stop-color="#7a5a14"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="10" y="10" width="300" height="400" rx="22" fill="url(#hg2)" stroke="url(#hg3)" stroke-width="2"/>
+                            <circle cx="160" cy="170" r="120" fill="url(#hg1)"/>
+                            <!-- fighter silhouette -->
+                            <g fill="#0a0a0a" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round" transform="translate(80,70)">
+                                <!-- head -->
+                                <path d="M80 30c10 0 20 8 20 22 0 8-3 14-7 18l3 12c0 0-6 4-16 4s-16-4-16-4l3-12c-4-4-7-10-7-18 0-14 10-22 20-22z"/>
+                                <!-- gloves -->
+                                <path d="M30 130c-6 4-10 14-6 22 6 12 22 4 26-2 4-6 6-14 6-14l-26-6z"/>
+                                <path d="M130 130c6 4 10 14 6 22-6 12-22 4-26-2-4-6-6-14-6-14l26-6z"/>
+                                <!-- torso -->
+                                <path d="M50 92c8 4 18 6 30 6s22-2 30-6c8 8 14 22 14 38 0 24-8 60-12 90-2 14-12 30-32 30s-30-16-32-30c-4-30-12-66-12-90 0-16 6-30 14-38z"/>
+                                <!-- belt -->
+                                <rect x="44" y="180" width="72" height="14" rx="3" fill="#d4af37"/>
+                                <circle cx="80" cy="187" r="6" fill="#0a0a0a" stroke="#7a5a14"/>
+                            </g>
+                            <text x="160" y="370" text-anchor="middle" font-family="Bebas Neue, Impact, sans-serif" font-size="28" letter-spacing="6" fill="#d4af37">CHAMPION SERIES</text>
+                            <text x="160" y="392" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" letter-spacing="3" fill="#888">№ 047 / 250</text>
+                        </svg>
+                    </div>
+                    <div class="hero__card-meta">
+                        <div>
+                            <span class="hero__card-name">Champion Series · Vol.&nbsp;01</span>
+                            <span class="hero__card-sub">Premium resin · ручная окраска</span>
+                        </div>
+                        <span class="hero__card-price">24&nbsp;900&nbsp;₽</span>
+                    </div>
+                </div>
+
+                <div class="hero__floats">
+                    <span class="float-tag float-tag--1">Hand-painted</span>
+                    <span class="float-tag float-tag--2">Official UFC</span>
+                    <span class="float-tag float-tag--3">Limited&nbsp;Drop</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="#categories" class="hero__scroll" aria-label="Скролл вниз">
+            <span class="hero__scroll-line"></span>
+            <span class="hero__scroll-text">scroll</span>
+        </a>
+
+        <!-- ticker -->
+        <div class="ticker" aria-hidden="true">
+            <div class="ticker__track">
+                <span>Champion Series</span><i>★</i>
+                <span>UFC Official</span><i>★</i>
+                <span>Limited Drops</span><i>★</i>
+                <span>Hand-Painted Resin</span><i>★</i>
+                <span>Worldwide Shipping</span><i>★</i>
+                <span>Collector Grade</span><i>★</i>
+                <span>Champion Series</span><i>★</i>
+                <span>UFC Official</span><i>★</i>
+                <span>Limited Drops</span><i>★</i>
+                <span>Hand-Painted Resin</span><i>★</i>
+                <span>Worldwide Shipping</span><i>★</i>
+                <span>Collector Grade</span><i>★</i>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         CATEGORIES
+    ========================== -->
+    <section class="categories section" id="categories">
+        <div class="container">
+            <header class="section__header">
+                <span class="section__eyebrow reveal" data-reveal>· 01 · категории</span>
+                <h2 class="section__title reveal" data-reveal data-delay="100">
+                    Выбирай&nbsp;стихию.<br/>
+                    <em>Каждая&nbsp;деталь&nbsp;— премиум.</em>
+                </h2>
+                <p class="section__lead reveal" data-reveal data-delay="180">
+                    Четыре направления, в которых HUB задаёт стандарт:
+                    от коллекционных фигурок легендарных бойцов до официального мерча&nbsp;UFC и спортивной экипировки.
+                </p>
+            </header>
+
+            <div class="cat-grid">
+                <a href="#fighters" class="cat-card cat-card--lg reveal" data-reveal data-tilt>
+                    <div class="cat-card__bg cat-card__bg--fighters"></div>
+                    <div class="cat-card__overlay"></div>
+                    <span class="cat-card__num">01</span>
+                    <div class="cat-card__body">
+                        <span class="cat-card__kicker">Самая популярная категория</span>
+                        <h3 class="cat-card__title">Фигурки бойцов</h3>
+                        <p class="cat-card__desc">Premium resin, авторская роспись, лимитированные тиражи. Махачев, Адесанья, Джонс и&nbsp;другие легенды.</p>
+                        <span class="cat-card__cta">Смотреть фигурки <i>→</i></span>
+                    </div>
+                    <span class="cat-card__count">240+ моделей</span>
+                </a>
+
+                <a href="#drops" class="cat-card reveal" data-reveal data-delay="80" data-tilt>
+                    <div class="cat-card__bg cat-card__bg--ufc"></div>
+                    <div class="cat-card__overlay"></div>
+                    <span class="cat-card__num">02</span>
+                    <div class="cat-card__body">
+                        <h3 class="cat-card__title">UFC Мерч</h3>
+                        <p class="cat-card__desc">Официальные футболки, рашгарды, кепки и худи. Лицензия&nbsp;UFC.</p>
+                        <span class="cat-card__cta">К мерчу <i>→</i></span>
+                    </div>
+                    <span class="cat-card__count">180+ позиций</span>
+                </a>
+
+                <a href="#drops" class="cat-card reveal" data-reveal data-delay="160" data-tilt>
+                    <div class="cat-card__bg cat-card__bg--gear"></div>
+                    <div class="cat-card__overlay"></div>
+                    <span class="cat-card__num">03</span>
+                    <div class="cat-card__body">
+                        <h3 class="cat-card__title">Спортивная экипировка</h3>
+                        <p class="cat-card__desc">Перчатки, бинты, защита. Профессиональные бренды для зала и ринга.</p>
+                        <span class="cat-card__cta">К экипировке <i>→</i></span>
+                    </div>
+                    <span class="cat-card__count">95+ товаров</span>
+                </a>
+
+                <a href="#drops" class="cat-card cat-card--wide reveal" data-reveal data-delay="240" data-tilt>
+                    <div class="cat-card__bg cat-card__bg--limited"></div>
+                    <div class="cat-card__overlay"></div>
+                    <span class="cat-card__num">04</span>
+                    <div class="cat-card__body">
+                        <span class="cat-card__kicker cat-card__kicker--hot">Drop недели</span>
+                        <h3 class="cat-card__title">Лимитированные коллекции</h3>
+                        <p class="cat-card__desc">Капсульные релизы, нумерованные серии, коллаборации с чемпионами&nbsp;— только в&nbsp;HUB.</p>
+                        <span class="cat-card__cta">Все дропы <i>→</i></span>
+                    </div>
+                    <span class="cat-card__count">12 активных дропов</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         FEATURED PRODUCTS / DROPS
+    ========================== -->
+    <section class="drops section" id="drops">
+        <div class="container">
+            <header class="section__header section__header--row">
+                <div>
+                    <span class="section__eyebrow reveal" data-reveal>· 02 · новинки</span>
+                    <h2 class="section__title reveal" data-reveal data-delay="100">
+                        Свежий&nbsp;дроп.<br/>
+                        <em>Только&nbsp;в&nbsp;HUB.</em>
+                    </h2>
+                </div>
+                <div class="drops__filter reveal" data-reveal data-delay="180">
+                    <button class="chip is-active" data-filter="all">Все</button>
+                    <button class="chip" data-filter="figures">Фигурки</button>
+                    <button class="chip" data-filter="merch">Мерч</button>
+                    <button class="chip" data-filter="gear">Экипировка</button>
+                </div>
+            </header>
+
+            <div class="drops__grid" id="dropsGrid">
+                <!-- product 1 -->
+                <article class="product reveal" data-reveal data-cat="figures">
+                    <div class="product__media" data-tilt>
+                        <span class="product__badge product__badge--gold">Limited</span>
+                        <span class="product__heart" aria-label="В избранное">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </span>
+                        <div class="product__art product__art--khabib">
+                            <div class="product__halo"></div>
+                            <svg viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="pg1" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#1a1a1a"/>
+                                        <stop offset="100%" stop-color="#0a0a0a"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="220" height="280" rx="14" fill="url(#pg1)"/>
+                                <g transform="translate(50,30)" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.4">
+                                    <path d="M60 10c10 0 18 7 18 19 0 7-3 13-7 17l3 10c0 0-5 4-14 4s-14-4-14-4l3-10c-4-4-7-10-7-17 0-12 8-19 18-19z"/>
+                                    <path d="M30 90c8 4 18 6 30 6s22-2 30-6c6 8 12 20 12 34 0 22-6 56-10 84-2 12-10 28-32 28s-30-16-32-28c-4-28-10-62-10-84 0-14 6-26 12-34z"/>
+                                    <rect x="28" y="158" width="64" height="12" rx="2" fill="#d4af37"/>
+                                </g>
+                                <text x="110" y="248" text-anchor="middle" font-family="Bebas Neue,Impact" font-size="22" fill="#d4af37" letter-spacing="4">EAGLE</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product__info">
+                        <span class="product__cat">Champion Series</span>
+                        <h3 class="product__name">«Eagle» — фигурка чемпиона</h3>
+                        <div class="product__meta">
+                            <span class="product__rating">★ 4.9 <em>(218)</em></span>
+                            <span class="product__stock">в наличии</span>
+                        </div>
+                        <div class="product__bottom">
+                            <span class="product__price">29&nbsp;900&nbsp;₽<small>34&nbsp;900&nbsp;₽</small></span>
+                            <button class="product__btn" aria-label="В корзину">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- product 2 -->
+                <article class="product reveal" data-reveal data-delay="80" data-cat="merch">
+                    <div class="product__media" data-tilt>
+                        <span class="product__badge product__badge--red">New</span>
+                        <span class="product__heart">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </span>
+                        <div class="product__art product__art--tshirt">
+                            <svg viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <rect width="220" height="280" rx="14" fill="#111"/>
+                                <path d="M60 70 L90 50 L130 50 L160 70 L185 95 L165 115 L150 105 L150 230 L70 230 L70 105 L55 115 L35 95 Z" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.6"/>
+                                <text x="110" y="160" text-anchor="middle" font-family="Bebas Neue,Impact" font-size="34" fill="#e63946" letter-spacing="3">UFC</text>
+                                <text x="110" y="186" text-anchor="middle" font-family="Manrope,sans-serif" font-size="10" fill="#d4af37" letter-spacing="6">CHAMPION'25</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product__info">
+                        <span class="product__cat">UFC Official</span>
+                        <h3 class="product__name">UFC Champion'25 · футболка</h3>
+                        <div class="product__meta">
+                            <span class="product__rating">★ 4.8 <em>(412)</em></span>
+                            <span class="product__stock">в наличии</span>
+                        </div>
+                        <div class="product__bottom">
+                            <span class="product__price">5&nbsp;490&nbsp;₽</span>
+                            <button class="product__btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- product 3 -->
+                <article class="product reveal" data-reveal data-delay="160" data-cat="gear">
+                    <div class="product__media" data-tilt>
+                        <span class="product__badge product__badge--dark">Pro</span>
+                        <span class="product__heart">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </span>
+                        <div class="product__art product__art--gloves">
+                            <svg viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <rect width="220" height="280" rx="14" fill="#101010"/>
+                                <g transform="translate(40,60)" fill="#1a1a1a" stroke="#d4af37" stroke-width="1.5">
+                                    <path d="M40 30c-12 0-24 12-24 30v60c0 18 14 32 32 32h44c20 0 32-12 32-30v-30c0-8-4-14-12-14h-12V30c0-12-10-20-22-20s-22 8-22 20v30H40z"/>
+                                    <path d="M52 30v40" stroke-width="1"/>
+                                    <path d="M76 30v40" stroke-width="1"/>
+                                    <path d="M100 36v34" stroke-width="1"/>
+                                </g>
+                                <text x="110" y="248" text-anchor="middle" font-family="Bebas Neue,Impact" font-size="20" fill="#d4af37" letter-spacing="4">PRO GLOVES 16OZ</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product__info">
+                        <span class="product__cat">Экипировка</span>
+                        <h3 class="product__name">Перчатки HUB Pro · 16 oz</h3>
+                        <div class="product__meta">
+                            <span class="product__rating">★ 4.9 <em>(96)</em></span>
+                            <span class="product__stock">в наличии</span>
+                        </div>
+                        <div class="product__bottom">
+                            <span class="product__price">12&nbsp;900&nbsp;₽</span>
+                            <button class="product__btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- product 4 -->
+                <article class="product reveal" data-reveal data-delay="240" data-cat="figures">
+                    <div class="product__media" data-tilt>
+                        <span class="product__badge product__badge--gold">№ 12 / 100</span>
+                        <span class="product__heart">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </span>
+                        <div class="product__art product__art--spider">
+                            <svg viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <rect width="220" height="280" rx="14" fill="#0e0e0e"/>
+                                <g transform="translate(50,28)" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.4">
+                                    <path d="M60 8c11 0 20 8 20 20 0 7-3 13-7 17l3 10c-2 2-7 4-16 4s-14-2-16-4l3-10c-4-4-7-10-7-17 0-12 9-20 20-20z"/>
+                                    <path d="M28 88c8 4 18 6 32 6s24-2 32-6c8 10 14 22 14 38 0 22-6 56-10 84-2 14-12 30-36 30s-34-16-36-30c-4-28-10-62-10-84 0-16 6-28 14-38z"/>
+                                </g>
+                                <text x="110" y="248" text-anchor="middle" font-family="Bebas Neue,Impact" font-size="22" fill="#d4af37" letter-spacing="4">SPIDER · MW</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product__info">
+                        <span class="product__cat">Champion Series</span>
+                        <h3 class="product__name">«Spider» Middleweight · 1/6</h3>
+                        <div class="product__meta">
+                            <span class="product__rating">★ 5.0 <em>(54)</em></span>
+                            <span class="product__stock product__stock--low">осталось 6</span>
+                        </div>
+                        <div class="product__bottom">
+                            <span class="product__price">42&nbsp;500&nbsp;₽</span>
+                            <button class="product__btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- product 5 -->
+                <article class="product reveal" data-reveal data-cat="merch">
+                    <div class="product__media" data-tilt>
+                        <span class="product__badge product__badge--red">-15%</span>
+                        <span class="product__heart">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </span>
+                        <div class="product__art product__art--cap">
+                            <svg viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <rect width="220" height="280" rx="14" fill="#0f0f0f"/>
+                                <path d="M40 160c0-44 32-78 70-78s70 34 70 78v8H40z" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.6"/>
+                                <path d="M30 168h160c0 14-8 22-22 22H52c-14 0-22-8-22-22z" fill="#1a1a1a" stroke="#d4af37" stroke-width="1.6"/>
+                                <text x="110" y="148" text-anchor="middle" font-family="Bebas Neue,Impact" font-size="26" fill="#d4af37" letter-spacing="4">HUB</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product__info">
+                        <span class="product__cat">UFC Official</span>
+                        <h3 class="product__name">Кепка HUB × UFC</h3>
+                        <div class="product__meta">
+                            <span class="product__rating">★ 4.7 <em>(308)</em></span>
+                            <span class="product__stock">в наличии</span>
+                        </div>
+                        <div class="product__bottom">
+                            <span class="product__price">3&nbsp;290&nbsp;₽<small>3&nbsp;890&nbsp;₽</small></span>
+                            <button class="product__btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- product 6 -->
+                <article class="product reveal" data-reveal data-delay="80" data-cat="gear">
+                    <div class="product__media" data-tilt>
+                        <span class="product__badge product__badge--dark">Pro</span>
+                        <span class="product__heart">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </span>
+                        <div class="product__art product__art--bag">
+                            <svg viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <rect width="220" height="280" rx="14" fill="#0e0e0e"/>
+                                <path d="M85 50h50v22h22v160c0 8-6 14-14 14H77c-8 0-14-6-14-14V72h22z" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.6"/>
+                                <path d="M95 50v-12c0-4 3-8 8-8h14c5 0 8 4 8 8v12" fill="none" stroke="#d4af37" stroke-width="1.6"/>
+                                <text x="110" y="170" text-anchor="middle" font-family="Bebas Neue,Impact" font-size="26" fill="#d4af37" letter-spacing="3">HUB GYM</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product__info">
+                        <span class="product__cat">Экипировка</span>
+                        <h3 class="product__name">Сумка HUB Gym 45L</h3>
+                        <div class="product__meta">
+                            <span class="product__rating">★ 4.8 <em>(141)</em></span>
+                            <span class="product__stock">в наличии</span>
+                        </div>
+                        <div class="product__bottom">
+                            <span class="product__price">8&nbsp;490&nbsp;₽</span>
+                            <button class="product__btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="drops__cta reveal" data-reveal>
+                <a href="#" class="btn btn--ghost">Все товары каталога <i>→</i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         FIGHTERS SHOWCASE
+    ========================== -->
+    <section class="fighters section" id="fighters">
+        <div class="container">
+            <header class="section__header">
+                <span class="section__eyebrow reveal" data-reveal>· 03 · легенды октагона</span>
+                <h2 class="section__title reveal" data-reveal data-delay="100">
+                    Фигурки,&nbsp;которые&nbsp;стоят<br/>
+                    <em>на&nbsp;полке&nbsp;истории.</em>
+                </h2>
+            </header>
+
+            <div class="fighters__grid">
+                <article class="fighter-card reveal" data-reveal>
+                    <div class="fighter-card__media fighter-card__media--1"></div>
+                    <div class="fighter-card__overlay"></div>
+                    <div class="fighter-card__body">
+                        <span class="fighter-card__weight">Lightweight</span>
+                        <h3 class="fighter-card__name">«The Eagle»</h3>
+                        <p class="fighter-card__rec">29-0 · 3 серии фигурок</p>
+                    </div>
+                    <span class="fighter-card__btn">→</span>
+                </article>
+                <article class="fighter-card reveal" data-reveal data-delay="100">
+                    <div class="fighter-card__media fighter-card__media--2"></div>
+                    <div class="fighter-card__overlay"></div>
+                    <div class="fighter-card__body">
+                        <span class="fighter-card__weight">Middleweight</span>
+                        <h3 class="fighter-card__name">«The Spider»</h3>
+                        <p class="fighter-card__rec">34-11 · 5 серий фигурок</p>
+                    </div>
+                    <span class="fighter-card__btn">→</span>
+                </article>
+                <article class="fighter-card reveal" data-reveal data-delay="200">
+                    <div class="fighter-card__media fighter-card__media--3"></div>
+                    <div class="fighter-card__overlay"></div>
+                    <div class="fighter-card__body">
+                        <span class="fighter-card__weight">Light Heavyweight</span>
+                        <h3 class="fighter-card__name">«Bones»</h3>
+                        <p class="fighter-card__rec">27-1 · 4 серии фигурок</p>
+                    </div>
+                    <span class="fighter-card__btn">→</span>
+                </article>
+                <article class="fighter-card reveal" data-reveal data-delay="300">
+                    <div class="fighter-card__media fighter-card__media--4"></div>
+                    <div class="fighter-card__overlay"></div>
+                    <div class="fighter-card__body">
+                        <span class="fighter-card__weight">Featherweight</span>
+                        <h3 class="fighter-card__name">«Notorious»</h3>
+                        <p class="fighter-card__rec">22-6 · 6 серий фигурок</p>
+                    </div>
+                    <span class="fighter-card__btn">→</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+    <section class="about section" id="about">
+        <div class="container about__inner">
+            <div class="about__copy">
+                <span class="section__eyebrow reveal" data-reveal>· 04 · о нас</span>
+                <h2 class="section__title reveal" data-reveal data-delay="100">
+                    HUB&nbsp;— это&nbsp;не&nbsp;магазин.<br/>
+                    <em>Это&nbsp;коллекционный&nbsp;клуб.</em>
+                </h2>
+                <p class="section__lead reveal" data-reveal data-delay="200">
+                    Мы&nbsp;собираем релизы по&nbsp;всему миру: премиальные фигурки 1/6,
+                    лицензионный мерч&nbsp;UFC, профессиональную экипировку. Каждая позиция проходит контроль качества,
+                    а лимитированные тиражи&nbsp;— нумеруются и&nbsp;идут с&nbsp;сертификатом.
+                </p>
+
+                <ul class="about__features">
+                    <li class="reveal" data-reveal data-delay="280">
+                        <span class="about__feat-num">01</span>
+                        <div>
+                            <h4>Только официальные релизы</h4>
+                            <p>Прямые контракты с&nbsp;производителями и&nbsp;UFC&nbsp;Store.</p>
+                        </div>
+                    </li>
+                    <li class="reveal" data-reveal data-delay="340">
+                        <span class="about__feat-num">02</span>
+                        <div>
+                            <h4>Сертификат подлинности</h4>
+                            <p>Серийный номер, NFT-карточка коллекционера, гарантия аутентичности.</p>
+                        </div>
+                    </li>
+                    <li class="reveal" data-reveal data-delay="400">
+                        <span class="about__feat-num">03</span>
+                        <div>
+                            <h4>Доставка по всему миру</h4>
+                            <p>Защитная упаковка, страховка, трекинг от&nbsp;двери до&nbsp;двери.</p>
+                        </div>
+                    </li>
+                    <li class="reveal" data-reveal data-delay="460">
+                        <span class="about__feat-num">04</span>
+                        <div>
+                            <h4>Доступ к закрытым дропам</h4>
+                            <p>Подписчики&nbsp;HUB видят релизы за&nbsp;48&nbsp;часов до&nbsp;старта продаж.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <aside class="about__visual reveal" data-reveal data-delay="200">
+                <div class="about__poster" data-tilt>
+                    <div class="about__poster-grid"></div>
+                    <div class="about__poster-belt">
+                        <span>HUB · CHAMPION CLUB · EST. 2025</span>
+                    </div>
+                    <div class="about__poster-art">
+                        <svg viewBox="0 0 280 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <radialGradient id="abg" cx="50%" cy="50%" r="55%">
+                                    <stop offset="0%" stop-color="#d4af37" stop-opacity=".55"/>
+                                    <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+                                </radialGradient>
+                            </defs>
+                            <circle cx="140" cy="170" r="120" fill="url(#abg)"/>
+                            <g transform="translate(60,40)" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.5">
+                                <path d="M80 10c12 0 22 8 22 22 0 8-3 14-7 18l3 12c-2 2-8 4-18 4s-16-2-18-4l3-12c-4-4-7-10-7-18 0-14 10-22 22-22z"/>
+                                <path d="M40 100c10 4 22 8 40 8s30-4 40-8c8 10 14 24 14 40 0 26-8 64-12 96-2 14-12 32-42 32s-40-18-42-32c-4-32-12-70-12-96 0-16 6-30 14-40z"/>
+                                <rect x="42" y="180" width="76" height="14" rx="2" fill="#d4af37"/>
+                                <circle cx="80" cy="187" r="6" fill="#0a0a0a"/>
+                            </g>
+                            <text x="140" y="320" text-anchor="middle" font-family="Bebas Neue,Impact" font-size="22" fill="#d4af37" letter-spacing="6">CHAMPION CLUB</text>
+                        </svg>
+                    </div>
+                    <div class="about__poster-foot">
+                        <span>№ 001 / ∞</span>
+                        <span>HUB · 2025</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- stats marquee -->
+        <div class="container">
+            <div class="about__stats">
+                <div class="about__stat reveal" data-reveal>
+                    <span class="about__stat-num"><span data-count="540">0</span>+</span>
+                    <span class="about__stat-label">фигурок<br/>в каталоге</span>
+                </div>
+                <div class="about__stat reveal" data-reveal data-delay="100">
+                    <span class="about__stat-num"><span data-count="36">0</span></span>
+                    <span class="about__stat-label">официальных<br/>брендов</span>
+                </div>
+                <div class="about__stat reveal" data-reveal data-delay="200">
+                    <span class="about__stat-num"><span data-count="98">0</span>%</span>
+                    <span class="about__stat-label">положительных<br/>отзывов</span>
+                </div>
+                <div class="about__stat reveal" data-reveal data-delay="300">
+                    <span class="about__stat-num"><span data-count="48">0</span>ч</span>
+                    <span class="about__stat-label">до старта<br/>дропа</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         CTA / NEWSLETTER
+    ========================== -->
+    <section class="cta section" id="contacts">
+        <div class="container">
+            <div class="cta__box reveal" data-reveal>
+                <div class="cta__bg"></div>
+                <div class="cta__copy">
+                    <span class="section__eyebrow">· join the club</span>
+                    <h2 class="cta__title">Получай&nbsp;дропы&nbsp;<em>раньше&nbsp;всех.</em></h2>
+                    <p>Вступай в&nbsp;закрытый клуб HUB&nbsp;— первым узнавай о&nbsp;новых фигурках, дропах и&nbsp;коллаборациях.</p>
+                </div>
+                <form class="cta__form" onsubmit="event.preventDefault(); this.classList.add('is-sent');">
+                    <label class="cta__field">
+                        <input type="email" required placeholder="your@email.com" />
+                    </label>
+                    <button class="btn btn--primary" type="submit">
+                        <span>Подписаться</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+                    </button>
+                    <span class="cta__success">готово · до встречи в HUB</span>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <a href="#" class="nav__logo">
+                    <span class="nav__logo-mark">H</span>
+                    <span class="nav__logo-text">
+                        <strong>HUB</strong>
+                        <em>Collection&nbsp;Store</em>
+                    </span>
+                </a>
+                <p>Премиальный магазин коллекционных фигурок, мерча&nbsp;UFC и&nbsp;спортивной экипировки. С&nbsp;2025 года.</p>
+                <div class="footer__socials">
+                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+                    <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="m21.86 4.06-2.84 13.4c-.21.94-.78 1.18-1.58.74l-4.36-3.21-2.1 2.02c-.23.23-.43.43-.88.43l.31-4.43L18.5 6.6c.35-.31-.08-.49-.55-.18L7.5 13.04l-4.4-1.37c-.96-.3-.97-.96.2-1.42L20.6 3.07c.8-.3 1.5.18 1.26.99z"/></svg></a>
+                    <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23 7.5s-.2-1.5-.8-2.2c-.8-.8-1.6-.8-2-.9C16.9 4 12 4 12 4s-4.9 0-8.2.4c-.4 0-1.2.1-2 .9C1.2 6 1 7.5 1 7.5S.8 9.3.8 11v1.9c0 1.7.2 3.5.2 3.5s.2 1.5.8 2.2c.8.8 1.8.8 2.3.9 1.7.2 7.9.4 7.9.4s4.9 0 8.2-.4c.4 0 1.2-.1 2-.9.6-.7.8-2.2.8-2.2s.2-1.8.2-3.5V11c0-1.7-.2-3.5-.2-3.5zM9.7 14.6V8l5.6 3.3-5.6 3.3z"/></svg></a>
+                    <a href="#" aria-label="VK"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21.6 7.6c.1-.4 0-.7-.6-.7h-2c-.5 0-.7.3-.8.5 0 0-.9 2.3-2.3 3.7-.4.4-.6.6-.9.6-.1 0-.3-.2-.3-.6V7.6c0-.5-.1-.7-.5-.7h-3.2c-.3 0-.5.2-.5.4 0 .5.7.6.8 1.9v2.9c0 .6-.1.7-.4.7-.7 0-2.3-2.3-3.2-5-.2-.5-.4-.7-.9-.7H4.7c-.6 0-.7.3-.7.6 0 .5.7 3 3 6.4 1.6 2.3 3.8 3.6 5.8 3.6 1.2 0 1.4-.3 1.4-.7v-1.7c0-.5.1-.6.4-.6.2 0 .6.1 1.6 1.1 1.1 1.1 1.3 1.6 1.9 1.6h2c.6 0 .8-.3.7-.8-.2-.6-.9-1.4-1.7-2.4-.4-.5-1.1-1.1-1.3-1.4-.3-.4-.2-.6 0-.9 0 0 2.3-3.2 2.5-4.3z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h5>Магазин</h5>
+                <a href="#">Фигурки бойцов</a>
+                <a href="#">UFC Мерч</a>
+                <a href="#">Экипировка</a>
+                <a href="#">Лимитированные дропы</a>
+                <a href="#">Подарочные сертификаты</a>
+            </div>
+            <div class="footer__col">
+                <h5>Поддержка</h5>
+                <a href="#">Доставка и оплата</a>
+                <a href="#">Возврат</a>
+                <a href="#">Гарантия подлинности</a>
+                <a href="#">FAQ</a>
+                <a href="#">Связаться</a>
+            </div>
+            <div class="footer__col">
+                <h5>Контакты</h5>
+                <p>Москва, ул. Премиум, 7<br/>пн–вс · 10:00 – 22:00</p>
+                <a href="mailto:hello@hub-store.ru">hello@hub-store.ru</a>
+                <a href="tel:+74950000000">+7 (495) 000-00-00</a>
+            </div>
+        </div>
+        <div class="container footer__bottom">
+            <span>© 2025 HUB Collection Store. Все права защищены.</span>
+            <span class="footer__legal">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Оферта</a>
+            </span>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
