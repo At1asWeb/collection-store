@@ -21,7 +21,11 @@
     function runPreloader() {
         if (!preloader) { document.body.classList.remove('is-loading'); return; }
 
-        const minDuration = prefersReducedMotion ? 600 : 3200;
+        // Preloader is the brand intro — keep it long enough to actually be seen,
+        // even when the OS asks for reduced motion. We respect reduced motion by
+        // toning down decorative animations elsewhere (see CSS), not by skipping
+        // the welcome screen.
+        const minDuration = 3200;
         const start = performance.now();
         let progress = 0;
 
